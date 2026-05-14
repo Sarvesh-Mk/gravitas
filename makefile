@@ -6,10 +6,12 @@ CC = gcc
 CFLAGS = -Wall -I$(RAYLIB_PATH) -Iinclude
 LDFLAGS = -L$(RAYLIB_PATH) -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
+SRCS = $(wildcard *.c include/*.h)
+
 all: $(GAME)
 
-$(GAME): main.c
-	$(CC) main.c -o $(GAME) $(CFLAGS) $(LDFLAGS)
+$(GAME): $(SRCS)
+	$(CC) *.c -o $(GAME) $(CFLAGS) $(LDFLAGS)
 	./$(GAME)
 
 play: $(GAME)
