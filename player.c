@@ -1,5 +1,5 @@
-#include "raylib/raylib.h"
-#include "include/player.h"
+#include <raylib.h>
+#include "player.h"
 
 void UpdatePlayer(Player * self) {
   // Implementation for updating player state
@@ -9,7 +9,8 @@ void UpdatePlayer(Player * self) {
         (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN))*0.1f,
         (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT))*0.1f -   // Move right-left
         (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))*0.1f,
-        0.0f                                                // Move up-down
+        IsKeyDown(KEY_SPACE)*0.1f -
+        IsKeyDown(KEY_LEFT_SHIFT)*0.1f      // Move up-down
     },
     (Vector3){
         GetMouseDelta().x*0.05f,                            // Rotation: yaw
