@@ -6,10 +6,12 @@ int main(void){
     const int screenWidth = 1280;
     const int screenHeight = 720;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window"); 
+    DisableCursor;
     Player player = CreatePlayer(-10.0f, 10.0f, 0.0f);
 
     SetTargetFPS(60);
+    
     while (!WindowShouldClose()){
         
         UpdatePlayer(&player);
@@ -20,6 +22,7 @@ int main(void){
 
             BeginMode3D(player.camera);
 
+                DrawCube(ORIGIN, 2.0f, 2.0f, 2.0f, RED);
                 DrawGrid(10, 1.0f);
 
             EndMode3D();
