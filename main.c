@@ -16,9 +16,16 @@ int main(void){
     RigidBody floor = CreateRigidBody((Vector3){0.0f, -1.0f, 0.0f}, 1.0f, true, GenMeshCube(20.0f, 2.0f, 20.0f), LIGHTGRAY);
 
     while (!WindowShouldClose()){
+
+        if(IsKeyPressed(KEY_R)) {
+            cube.position = (Vector3){0.0f, 10.0f, 0.0f};
+            UpdateRigidBody(&cube);
+        }
         
         UpdatePlayer(&player);
-        UpdateRigidBody(&cube);
+        if(!BroadCollisionCheck(cube, floor)) {
+            UpdateRigidBody(&cube);
+        }
         UpdateRigidBody(&floor);
 
         BeginDrawing();
